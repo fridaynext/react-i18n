@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    [
+      "i18next-extract",
+      {
+        "keyAsDefaultValue": ["en_US"],
+        "defaultNS": "common",
+        "outputPath": "src/translations/{{locale}}/{{ns}}.json"
+      }
+      // […] your other plugins […]
+    ]
+  ],
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}

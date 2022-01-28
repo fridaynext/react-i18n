@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, {Suspense} from 'react';
 import './App.css';
+import {useTranslation} from "react-i18next";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function HeaderComponent()
+{
+    const [t, i18n] = useTranslation('common');
+    return <div> 
+		<h1>{t('welcome.title', {framework:'React'})}</h1>
+		<button onClick={() => i18n.changeLanguage('de_DE')}>de</button>
+        <button onClick={() => i18n.changeLanguage('en_US')}>en</button>
+        <p>{t('welcome.description')}</p>
+	</div>
+}
+
+function App()
+{
+    return (
+        <Suspense fallback="loading">
+            <div className="App">
+                <HeaderComponent/>
+            </div>
+        </Suspense>
+    );
 }
 
 export default App;
